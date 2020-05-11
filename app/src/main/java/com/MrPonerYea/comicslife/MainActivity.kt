@@ -38,25 +38,5 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
-        val items = listOf(
-            ItemRecycler("Александр", "Пушкин", "2"),
-            ItemRecycler("Михаил", "Лермонтов", "2"),
-            ItemRecycler("Александр", "Блок", "2"),
-            ItemRecycler("Николай", "Некрасов", "2"),
-            ItemRecycler("Фёдор", "Тютчев", "2"),
-            ItemRecycler("Сергей", "Есенин", "2"),
-            ItemRecycler("Владимир", "Маяковский", "2")
-        )
-
-        val myAdapter = RecyclerAdapter(items, object : RecyclerAdapter.Callback {
-            override fun onItemClicked(item: ItemRecycler) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-        })
-
-        recycler_view_orders.adapter = myAdapter
     }
 }

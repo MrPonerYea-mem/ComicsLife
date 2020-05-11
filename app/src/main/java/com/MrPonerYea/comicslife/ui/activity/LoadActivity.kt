@@ -35,7 +35,7 @@ class LoadActivity : AppCompatActivity() {
                     ?.getLoginWithEmailandPassword(data)
                     ?.enqueue(object : Callback<GetLogin?> {
                         override fun onFailure(call: Call<GetLogin?>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, changingConfigurations)
+                            Toast.makeText(applicationContext, "Не удалось подключиться к серверу, попробуйте позже" , changingConfigurations)
                                 .show()
                         }
 

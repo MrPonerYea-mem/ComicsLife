@@ -2,7 +2,7 @@
     <string name="app_name">ComicsLife</string>
     <string name="title_home">Статьи</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Профиль</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_email">Почта</string>
     <string name="button_login_text">Войти</string>

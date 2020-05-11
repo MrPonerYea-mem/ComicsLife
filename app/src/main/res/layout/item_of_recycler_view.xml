@@ -2,35 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_8dp"
+    android:layout_marginTop="@dimen/margin_8dp"
+    android:layout_marginEnd="@dimen/margin_8dp"
+    android:background="#FAEA80"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_view_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_8dp"
         android:layout_marginTop="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:gravity="start"
-        android:text="TextView" />
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:gravity="start" />
 
     <TextView
         android:id="@+id/text_view_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_8dp"
         android:layout_marginTop="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:gravity="center"
-        android:text="TextView" />
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/text_view_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_8dp"
         android:layout_marginTop="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:gravity="end"
-        android:text="TextView" />
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:gravity="end"/>
 </LinearLayout>

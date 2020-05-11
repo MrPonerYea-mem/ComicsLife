@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.MrPonerYea.comicslife.R
+import com.MrPonerYea.comicslife.data.pojo.Article
 import com.MrPonerYea.comicslife.data.pojo.ItemRecycler
 
 
-class RecyclerAdapter(var items: List<ItemRecycler>, val callback: Callback) :
+class RecyclerAdapter(var items: List<Article>, val callback: Callback) :
     RecyclerView.Adapter<RecyclerAdapter.MainHolder>() {
 
 
@@ -26,6 +27,12 @@ class RecyclerAdapter(var items: List<ItemRecycler>, val callback: Callback) :
         return items.size
     }
 
+    //передаем данные и оповещаем адаптер о необходимости обновления списка
+    fun refreshUsers(article: List<Article>) {
+        this.items = article
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         holder.bind(items[position])
     }
@@ -36,7 +43,7 @@ class RecyclerAdapter(var items: List<ItemRecycler>, val callback: Callback) :
         private val lastName = itemView.findViewById<TextView>(R.id.text_view_date)
         private val t = itemView.findViewById<TextView>(R.id.text_view_author)
 
-        fun bind(item: ItemRecycler) {
+        fun bind(item: Article) {
             firstName.text = item.title
             lastName.text = item.date
             t.text = item.author
@@ -48,7 +55,7 @@ class RecyclerAdapter(var items: List<ItemRecycler>, val callback: Callback) :
     }
 
     interface Callback {
-        fun onItemClicked(item: ItemRecycler)
+        fun onItemClicked(item: Article)
 
     }
 
