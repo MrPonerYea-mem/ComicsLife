@@ -28,8 +28,8 @@ class MarketAdapter(var cards: List<ItemMarket>) : RecyclerView.Adapter<MarketAd
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val cardView: CardView = holder.cardView
         val title = cardView.findViewById<View>(R.id.title) as TextView
-        title.setText(cards[position].phone)
+        title.setText(cards[position].title)
         val content = cardView.findViewById<View>(R.id.content) as TextView
-        content.setText(cards[position].name)
+        content.setText(cards[position].date)
     }
 }
