@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.MrPonerYea.comicslife.R
 import com.MrPonerYea.comicslife.data.pojo.Article
-import com.MrPonerYea.comicslife.data.pojo.ItemRecycler
 
 
 class RecyclerAdapter(var items: List<Article>, val callback: Callback) :
@@ -39,14 +38,14 @@ class RecyclerAdapter(var items: List<Article>, val callback: Callback) :
 
     inner class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val firstName = itemView.findViewById<TextView>(R.id.text_view_title)
-        private val lastName = itemView.findViewById<TextView>(R.id.text_view_date)
-        private val t = itemView.findViewById<TextView>(R.id.text_view_author)
+        private val title = itemView.findViewById<TextView>(R.id.text_view_title)
+        private val date = itemView.findViewById<TextView>(R.id.text_view_date)
+        private val author = itemView.findViewById<TextView>(R.id.text_view_author)
 
         fun bind(item: Article) {
-            firstName.text = item.title
-            lastName.text = item.date
-            t.text = item.author
+            title.text = item.title
+            date.text = item.date
+            author.text = item.author
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition])
             }

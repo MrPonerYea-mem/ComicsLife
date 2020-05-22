@@ -15,6 +15,13 @@ class ArticleActivity : AppCompatActivity() {
         text_view_title.text = intent.getStringExtra("title")
         text_view_message.text = intent.getStringExtra("message")
         text_view_date.text = intent.getStringExtra("date")
+
+        val message = intent.getStringExtra("message") ?: null;
+        if (message != null) {
+            web_view_text.loadDataWithBaseURL(null, message, "text/html", "utf-8", null)
+        } else {
+            web_view_text.loadDataWithBaseURL(null, "<h2>Текста нет</h2>", "text/html", "utf-8", null)
+        }
     }
 
 

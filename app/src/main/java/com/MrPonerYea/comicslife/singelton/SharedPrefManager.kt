@@ -31,4 +31,7 @@ object SharedPrefManager {
         return User(pref.getString(KEY_LOGIN, "-1"), pref.getString(KEY_EMAIL, "-1"), pref.getString(KEY_PASSWORD, "-1"))
     }
 
+    fun getLogin(context: Context): String {
+        return context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE).getString(KEY_LOGIN, "-1").toString()
+    }
 }

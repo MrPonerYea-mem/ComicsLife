@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
 import android.text.Html
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,8 @@ import com.MrPonerYea.comicslife.data.pojo.AllArticles
 import com.MrPonerYea.comicslife.data.pojo.Article
 import com.MrPonerYea.comicslife.data.pojo.ItemRecycler
 import com.MrPonerYea.comicslife.ui.activity.ArticleActivity
+import com.MrPonerYea.comicslife.ui.activity.CreateArticleActivity
+import kotlinx.android.synthetic.main.activity_create_article.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,7 +69,6 @@ class HomeFragment : Fragment() {
         handler = Handler()
         swipe_refresh_layout.setOnRefreshListener {
             runnable = Runnable {
-                Toast.makeText(this.context, "+++", id).show()
                 getArticleItems(articleItems)
                 swipe_refresh_layout.isRefreshing = false
             }
@@ -78,6 +81,25 @@ class HomeFragment : Fragment() {
             android.R.color.holo_orange_light
         )
 
+        floating_action_button.setOnClickListener {
+            startActivity(Intent(context, CreateArticleActivity::class.java))
+        }
+
+
+
+        var wather :TextWatcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        }
 
         // Равботает сделать статьи так
         /*web_view_article.loadDataWithBaseURL(null, "<h1>Hello</h1><p>test</p> <sdf> sdfsdf</sds> <ul> <li>hhhhhhhhhh </li> </ul> <img src=\"https://img-s1.onedio.com/id-540da08efbb2a0c252067682/rev-1/raw/s-749c0330f908406b8e10946f581e6c8c1dfee43d.jpg\" width=\"189\" height=\"255\" >", "text/html", "utf-8", null)

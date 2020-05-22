@@ -11,16 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <WebView
-            android:id="@+id/web_view_article"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <TextView
-            android:id="@+id/text_view_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_orders"
             android:layout_width="match_parent"
@@ -29,12 +19,12 @@
             tools:listitem="@layout/item_of_recycler_view" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/floating_action_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="@dimen/margin_16dp"
-            android:layout_marginBottom="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_8dp"
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@android:drawable/ic_input_add" />

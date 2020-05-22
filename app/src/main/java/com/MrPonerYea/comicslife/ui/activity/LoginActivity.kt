@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                                         val intent =
                                             Intent(applicationContext, MainActivity::class.java)
                                         startActivity(intent)
+                                        finish()
                                     }
                                 }
                                 false -> {

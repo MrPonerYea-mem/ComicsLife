@@ -11,4 +11,17 @@
     <string name="accept_password_text">Подтверждение пароля</string>
     <string name="user_have_account">Вы уже зарегистрированы?\nАвторизоваться</string>
     <string name="user_dont_have_account">У вас не таккаунта?\nЗарегистрироваться</string>
+    <string name="title_of_create_article">Конструктор статей</string>
+    <string name="name_of_article">Название статьи</string>
+    <string name="add_title">Заголовок</string>
+    <string name="add_tag_b">Жирный</string>
+    <string name="add_tag_u">Подчернуть</string>
+    <string name="add_tag_bloackquite">Цитата</string>
+    <string name="add_tag_img">Изображение</string>
+    <string name="add_tag_ref">Абзац</string>
+    <string name="add_tag_ul">Маркированый список</string>
+    <string name="add_tag_ol">Нумерованый список</string>
+    <string name="Clear_text">Очистить</string>
+    <string name="create_article">Создать</string>
+    <string name="new_line">Переход на новую строку</string>
 </resources>
