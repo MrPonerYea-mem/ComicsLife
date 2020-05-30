@@ -5,15 +5,22 @@ import com.google.gson.annotations.SerializedName
 
 
 class Article {
+    @SerializedName("idArticles")
+    @Expose
+    var idArticle: Int? = null
+
     @SerializedName("author")
     @Expose
     var author: String? = null
+
     @SerializedName("title")
     @Expose
     var title: String? = null
+
     @SerializedName("messgae")
     @Expose
     var messgae: String? = null
+
     @SerializedName("date")
     @Expose
     var date: String? = null

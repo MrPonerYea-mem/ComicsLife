@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         //val textView: TextView = root.findViewById(R.id.text_home)
@@ -56,6 +57,12 @@ class HomeFragment : Fragment() {
         })
 
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val articleItems: List<Article> = listOf(Article())
+        getArticleItems(articleItems)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,21 +92,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, CreateArticleActivity::class.java))
         }
 
-
-
-        var wather :TextWatcher = object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        }
 
         // Равботает сделать статьи так
         /*web_view_article.loadDataWithBaseURL(null, "<h1>Hello</h1><p>test</p> <sdf> sdfsdf</sds> <ul> <li>hhhhhhhhhh </li> </ul> <img src=\"https://img-s1.onedio.com/id-540da08efbb2a0c252067682/rev-1/raw/s-749c0330f908406b8e10946f581e6c8c1dfee43d.jpg\" width=\"189\" height=\"255\" >", "text/html", "utf-8", null)

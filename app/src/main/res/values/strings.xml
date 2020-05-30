@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ComicsLife</string>
     <string name="title_home">Статьи</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Объявления</string>
     <string name="title_notifications">Профиль</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_email">Почта</string>
@@ -24,4 +24,25 @@
     <string name="Clear_text">Очистить</string>
     <string name="create_article">Создать</string>
     <string name="new_line">Переход на новую строку</string>
+    <string name="text_ad">Создание объявления</string>
+    <string name="name">Название</string>
+    <string name="description">Описание</string>
+    <string name="price">Цена</string>
+    <string name="create_ad">Создать объявление</string>
+    <string name="marvel">Комиксы Marvel</string>
+    <string name="good_state">В хорошем состоянии…</string>
+    <string name="phone">Номер телефона</string>
+    <string name="phone_number">89046785423</string>
+    <string name="price_example">599</string>
+    <string name="call">Позвонить</string>
+    <string name="address">Адрес</string>
+    <string name="example_address">г. Архангельск, ул. Папанина, д.1, кв. 54</string>
+    <string name="profile">Профиль</string>
+    <string name="login">Логин</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="save">Сохранить</string>
+    <string name="open_full">Открыть полностью</string>
+    <string name="article">Статьи</string>
+    <string name="ad">Объявления</string>
 </resources>

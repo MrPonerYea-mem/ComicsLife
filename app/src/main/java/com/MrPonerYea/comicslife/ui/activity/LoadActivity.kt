@@ -37,6 +37,7 @@ class LoadActivity : AppCompatActivity() {
                         override fun onFailure(call: Call<GetLogin?>, t: Throwable) {
                             Toast.makeText(applicationContext, "Не удалось подключиться к серверу, попробуйте позже" , changingConfigurations)
                                 .show()
+                            finish()
                         }
 
                         override fun onResponse(

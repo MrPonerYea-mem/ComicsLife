@@ -1,9 +1,8 @@
 package com.MrPonerYea.comicslife.ui.activity
 
-import android.net.Network
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.MrPonerYea.comicslife.R
 import com.MrPonerYea.comicslife.data.network.NetworkService
 import com.MrPonerYea.comicslife.data.pojo.GetLogin
@@ -19,6 +18,12 @@ class CreateArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_article)
 
+        if (intent.getBooleanExtra("edit", false)) {
+            edit_text_title.setText(intent.getStringExtra("title"))
+            edit_text_maintext.setText(intent.getStringExtra("message"))
+            button_create_article.setText("Обновить")
+        }
+
         button_add_title.setOnClickListener {
             edit_text_maintext.text.insert(edit_text_maintext.selectionStart, "<h2> </h2>")
         }
@@ -28,15 +33,24 @@ class CreateArticleActivity : AppCompatActivity() {
         }
 
         button__add_img.setOnClickListener {
-            edit_text_maintext.text.insert(edit_text_maintext.selectionStart, "<img src=\"http://\" alt=\"image\" width=100%/>");
+            edit_text_maintext.text.insert(
+                edit_text_maintext.selectionStart,
+                "<img src=\"http://\" alt=\"image\" width=100%/>"
+            );
         }
 
         button_add_blockquite.setOnClickListener {
-            edit_text_maintext.text.insert(edit_text_maintext.selectionStart, "<blockquote> </blockquote>");
+            edit_text_maintext.text.insert(
+                edit_text_maintext.selectionStart,
+                "<blockquote> </blockquote>"
+            );
         }
 
         button_add_ol.setOnClickListener {
-            edit_text_maintext.text.insert(edit_text_maintext.selectionStart, "<ol>\n" + "\t<li> </li>\n" + "</ol>");
+            edit_text_maintext.text.insert(
+                edit_text_maintext.selectionStart,
+                "<ol>\n" + "\t<li> </li>\n" + "</ol>"
+            );
         }
 
         button_add_ref.setOnClickListener {
@@ -48,7 +62,10 @@ class CreateArticleActivity : AppCompatActivity() {
         }
 
         button_add_ul.setOnClickListener {
-            edit_text_maintext.text.insert(edit_text_maintext.selectionStart, "<ul>\n" + "\t<li> </li>\n" + "</ul>");
+            edit_text_maintext.text.insert(
+                edit_text_maintext.selectionStart,
+                "<ul>\n" + "\t<li> </li>\n" + "</ul>"
+            );
         }
 
         button_add_br.setOnClickListener {
@@ -61,36 +78,114 @@ class CreateArticleActivity : AppCompatActivity() {
         }
 
         button_create_article.setOnClickListener {
-            if (!edit_text_maintext.text.isNullOrBlank() && !edit_text_title.text.isNullOrBlank() && SharedPrefManager.getLogin(applicationContext) != "-1") {
-                NetworkService.getInstance()
-                    ?.getJSONApi()
-                    ?.addArticle(SharedPrefManager.getLogin(applicationContext), edit_text_title.text.toString(), edit_text_maintext.text.toString())
-                    ?.enqueue(object : Callback<GetLogin?> {
-                        override fun onFailure(call: Call<GetLogin?>, t: Throwable) {
-                            Toast.makeText(applicationContext, "Не удалось подлючится к серверу" + t.message, Toast.LENGTH_SHORT).show()
-                        }
+            if (!edit_text_maintext.text.isNullOrBlank() && !edit_text_title.text.isNullOrBlank() && SharedPrefManager.getLogin(
+                    applicationContext
+                ) != "-1"
+            ) {
+                if (intent.getBooleanExtra("edit", false)) {
+                    if (!edit_text_title.text.isNullOrBlank() && !edit_text_maintext.text.isNullOrBlank()) {
+                        NetworkService.getInstance()
+                            ?.getJSONApi()
+                            ?.updateArticle(
+                                intent.getIntExtra("id", 0),
+                                edit_text_title.text.toString(),
+                                edit_text_maintext.text.toString()
+                            )
+                            ?.enqueue(object : Callback<GetLogin?> {
+                                override fun onFailure(call: Call<GetLogin?>, t: Throwable) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Не удалось подключится к серверу",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
 
-                        override fun onResponse(
-                            call: Call<GetLogin?>,
-                            response: Response<GetLogin?>
-                        ) {
-                            val request = response.body()
-                            when(request?.success){
-                                true-> {
-                                    Toast.makeText(applicationContext, "Статья успешно добавлена", Toast.LENGTH_SHORT).show()
-                                    finish()
+                                override fun onResponse(
+                                    call: Call<GetLogin?>,
+                                    response: Response<GetLogin?>
+                                ) {
+                                    val reqest = response.body()
+                                    when (reqest?.success) {
+                                        true -> {
+                                            Toast.makeText(
+                                                applicationContext,
+                                                "Стаья успешно обновлена",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            finish()
+                                        }
+                                        false -> {
+                                            Toast.makeText(
+                                                applicationContext,
+                                                reqest.message,
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                        else -> {
+                                            Toast.makeText(
+                                                applicationContext,
+                                                "Не удалось выполнить запрос",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
                                 }
-                                false ->{
-                                    Toast.makeText(applicationContext, request.message, Toast.LENGTH_SHORT).show()
-                                }
-                                else ->{
-                                    Toast.makeText(applicationContext, "Не удалось подлючится к серверу, попробуйте позже", Toast.LENGTH_SHORT).show()
+                            })
+                    } else {
+                        Toast.makeText(applicationContext, "Введите все данные", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    NetworkService.getInstance()
+                        ?.getJSONApi()
+                        ?.addArticle(
+                            SharedPrefManager.getLogin(applicationContext),
+                            edit_text_title.text.toString(),
+                            edit_text_maintext.text.toString()
+                        )
+                        ?.enqueue(object : Callback<GetLogin?> {
+                            override fun onFailure(call: Call<GetLogin?>, t: Throwable) {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Не удалось подлючится к серверу" + t.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                            override fun onResponse(
+                                call: Call<GetLogin?>,
+                                response: Response<GetLogin?>
+                            ) {
+                                val request = response.body()
+                                when (request?.success) {
+                                    true -> {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Статья успешно добавлена",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        finish()
+                                    }
+                                    false -> {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            request.message,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    else -> {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Не удалось подлючится к серверу, попробуйте позже",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
+                }
             } else {
-                Toast.makeText(applicationContext, "Введите текст во все поля", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Введите текст во все поля", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 

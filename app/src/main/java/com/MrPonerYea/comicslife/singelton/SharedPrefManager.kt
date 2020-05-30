@@ -10,6 +10,7 @@ object SharedPrefManager {
     private const val KEY_LOGIN = "keyusername"
     private const val KEY_EMAIL = "keyemail"
     private const val KEY_PASSWORD = "keypassword"
+    private const val KEY_ROLE = "keyrole"
 
     @Synchronized
     fun saveUser(context:Context, user: User) {
@@ -18,6 +19,7 @@ object SharedPrefManager {
         editor.putString(KEY_EMAIL, user.email)
         editor.putString(KEY_LOGIN, user.login)
         editor.putString(KEY_PASSWORD, user.password)
+        editor.putString(KEY_ROLE, user.role)
         editor.apply()
     }
 
@@ -33,5 +35,9 @@ object SharedPrefManager {
 
     fun getLogin(context: Context): String {
         return context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE).getString(KEY_LOGIN, "-1").toString()
+    }
+
+    fun getRole(context: Context): String {
+        return context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE).getString(KEY_ROLE, "-1").toString()
     }
 }

@@ -10,10 +10,7 @@ import retrofit2.http.*
 
 interface JSONPlaceHolderApi {
     @GET("login")
-    fun getLoginWithEmailandPassword(@QueryMap options:Map<String, String>): Call<GetLogin?>?
-
-    @GET("login1.php")
-    fun getWithLog(@Query("email")  email:String): Call<GetLogin?>?
+    fun getLoginWithEmailandPassword(@QueryMap options: Map<String, String>): Call<GetLogin?>?
 
     @Headers("Content-Type: application/json")
     @POST("registration")
@@ -21,15 +18,45 @@ interface JSONPlaceHolderApi {
 
     @FormUrlEncoded
     @POST("registration")
-    fun registration(@Field("email") email:String, @Field("login") login:String, @Field("password") pssword:String): Call<GetLogin?>?
+    fun registration(@Field("email") email: String, @Field("login") login: String, @Field("password") pssword: String): Call<GetLogin?>?
 
     @FormUrlEncoded
     @POST("setArticle")
-    fun addArticle(@Field("author") author:String, @Field("title") title:String, @Field("text") text:String): Call<GetLogin?>?
+    fun addArticle(@Field("author") author: String, @Field("title") title: String, @Field("text") text: String): Call<GetLogin?>?
 
     @GET("getArticles")
     fun getArticle(): Call<AllArticles?>?
 
     @GET("getComics")
     fun getComics(): Call<ItemMarket?>?
+
+    @FormUrlEncoded
+    @POST("setComics")
+    fun setComics(
+        @Field("title") title: String, @Field("description") description: String, @Field("phone") phone: String,
+        @Field("login") login: String, @Field("address") address: String, @Field("price") price: String
+    ): Call<GetLogin?>?
+
+    @FormUrlEncoded
+    @POST("getUserArticle")
+    fun getUserArticle(@Field("login") login: String): Call<AllArticles?>?
+
+    @FormUrlEncoded
+    @POST("getUserComics")
+    fun getUserComics(@Field("login") login: String): Call<ItemMarket?>?
+
+    @FormUrlEncoded
+    @POST("updateProfile")
+    fun updateProfile(@Field("login") login: String, @Field("email") email: String, @Field("password") password: String): Call<GetLogin?>?
+
+    @FormUrlEncoded
+    @POST("updateArticle")
+    fun updateArticle(@Field("id") id: Int, @Field("title") title: String, @Field("text") text: String): Call<GetLogin?>?
+
+    @FormUrlEncoded
+    @POST("updateComics")
+    fun updateComics(
+        @Field("title") title: String, @Field("description") description: String, @Field("phone") phone: String,
+        @Field("address") address: String, @Field("price") price: String, @Field("idComics") idComics: Int
+    ): Call<GetLogin?>?
 }

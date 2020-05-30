@@ -1,22 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.MrPonerYea.comicslife.utilities.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    android:id="@+id/test1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/profile"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/login" />
+
+        <TextView
+            android:id="@+id/text_view_login_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/email" />
+
+        <EditText
+            android:id="@+id/edit_text_email_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/edit_text_password_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/button_update_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/save" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/article"
+            android:textSize="20sp" />
+
+        <FrameLayout
+            android:id="@+id/frame_layout_article_profile"
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <!--            <androidx.core.widget.NestedScrollView-->
+            <!--                android:id="@+id/scroll_view_article_profile"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_8dp"-->
+            <!--                android:layout_marginBottom="50dp">-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_article_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="ifContentScrolls"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingBottom="50dp"
+                tools:listitem="@layout/item_of_recycler_view">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <!--            </androidx.core.widget.NestedScrollView>-->
+
+            <Button
+                android:id="@+id/button_open_article_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:text="@string/open_full" />
+
+        </FrameLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/ad"
+            android:textSize="20sp" />
+
+        <FrameLayout
+            android:id="@+id/frame_layout_comics_profile"
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <!--            <androidx.core.widget.NestedScrollView-->
+            <!--                android:id="@+id/scroll_view_comics_profile"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_8dp"-->
+            <!--                android:layout_marginBottom="50dp">-->
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:id="@+id/recycler_view_comics_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:overScrollMode="ifContentScrolls"
+                tools:listitem="@layout/item_of_recycler_view"
+                android:paddingBottom="50dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+            <!--            </androidx.core.widget.NestedScrollView>-->
+
+            <Button
+                android:id="@+id/button_open_comics_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:text="@string/open_full" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</com.MrPonerYea.comicslife.utilities.CustomScrollView>

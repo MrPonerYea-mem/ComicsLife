@@ -11,7 +11,13 @@ class AllArticles {
     @SerializedName("success")
     @Expose
     var success: Boolean? = null
+
+    @SerializedName("message")
+    @Expose
+    var message: String? = null
+
     @SerializedName("articles")
     @Expose
     var articles: List<Article?>? = null
+
 }
